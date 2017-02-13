@@ -1,0 +1,173 @@
+D:\C#练习\uart\uart\bin\Debug\uart.exe
+D:\C#练习\uart\uart\bin\Debug\uart.pdb
+D:\C#练习\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\C#练习\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\C#练习\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\C#练习\uart\uart\obj\Debug\uart.exe
+D:\C#练习\uart\uart\obj\Debug\uart.pdb
+D:\C#练习\uart\uart\bin\Debug\System.Data.SQLite.dll
+D:\C#练习\uart\uart\bin\Debug\System.Data.SQLite.pdb
+D:\C#练习\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\C#练习\uart\uart\obj\Debug\uart.FormMain.resources
+J:\uart\uart\obj\Debug\uart.exe
+J:\uart\uart\obj\Debug\uart.pdb
+J:\uart\uart\bin\Debug\uart.exe
+J:\uart\uart\bin\Debug\uart.pdb
+J:\uart\uart\bin\Debug\System.Data.SQLite.dll
+J:\uart\uart\bin\Debug\System.Data.SQLite.pdb
+J:\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+J:\uart\uart\obj\Debug\uart.FormMain.resources
+J:\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+J:\uart\uart\obj\Debug\uart.Properties.Resources.resources
+J:\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+K:\uart\uart\obj\Debug\uart.exe
+K:\uart\uart\obj\Debug\uart.pdb
+K:\uart\uart\bin\Debug\uart.exe
+K:\uart\uart\bin\Debug\uart.pdb
+K:\uart\uart\bin\Debug\System.Data.SQLite.dll
+K:\uart\uart\bin\Debug\System.Data.SQLite.pdb
+K:\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+K:\uart\uart\obj\Debug\uart.FormMain.resources
+K:\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+K:\uart\uart\obj\Debug\uart.Properties.Resources.resources
+K:\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\bin\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\bin\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\bin\Debug\System.Data.SQLite.dll
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\bin\Debug\System.Data.SQLite.pdb
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.FormMain.resources
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\项目-比赛\创新团队\2015无线门禁\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\bin\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\bin\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.FormMain.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+F:\uart\uart\obj\Debug\uart.exe
+F:\uart\uart\obj\Debug\uart.pdb
+F:\uart\uart\bin\Debug\uart.exe
+F:\uart\uart\bin\Debug\uart.pdb
+F:\uart\uart\bin\Debug\System.Data.SQLite.pdb
+F:\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+F:\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+F:\uart\uart\obj\Debug\uart.FormMain.resources
+F:\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+F:\uart\uart\obj\Debug\uart.Properties.Resources.resources
+F:\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.exe
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.pdb
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.FormMain.resources
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.Properties.Resources.resources
+C:\Users\Peace\Desktop\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+C:\Users\Peace\Desktop\uart\uart\bin\Debug\uart.exe
+C:\Users\Peace\Desktop\uart\uart\bin\Debug\uart.pdb
+C:\Users\Peace\Desktop\uart\uart\bin\Debug\System.Data.SQLite.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.exe
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.pdb
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\bin\Debug\uart.exe
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\bin\Debug\uart.pdb
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\bin\Debug\System.Data.SQLite.pdb
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.FormMain.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\QQ\519594492\FileRecv\uart - 11.21\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.exe
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.pdb
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\bin\Debug\uart.exe
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\bin\Debug\uart.pdb
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\bin\Debug\System.Data.SQLite.pdb
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.FormMain.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.Properties.Resources.resources
+C:\Users\Peace\Desktop\uart - 11.21\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\bin\Debug\uart.exe
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\bin\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\bin\Debug\System.Data.SQLite.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.FormMain.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart - 11.22\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.exe
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.pdb
+C:\Users\PH\Desktop\uart\uart\bin\Debug\uart.exe
+C:\Users\PH\Desktop\uart\uart\bin\Debug\uart.pdb
+C:\Users\PH\Desktop\uart\uart\bin\Debug\System.Data.SQLite.pdb
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.FormMain.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.Properties.Resources.resources
+C:\Users\PH\Desktop\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+G:\uart\uart\obj\Debug\uart.exe
+G:\uart\uart\obj\Debug\uart.pdb
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\项目-比赛\创新团队\2015无线门禁\上位机\uart\uart\obj\Debug\uart.csproj.ResolveComReference.cache
+G:\uart\uart\obj\Debug\uart.csproj.ResolveComReference.cache
+G:\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+G:\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+G:\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+G:\uart\uart\obj\Debug\uart.FormMain.resources
+G:\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+G:\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+G:\uart\uart\obj\Debug\uart.Properties.Resources.resources
+G:\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+G:\uart\uart\bin\Debug\uart.exe
+G:\uart\uart\bin\Debug\uart.pdb
+D:\uart\uart\obj\Debug\uart.csproj.ResolveComReference.cache
+D:\uart\uart\obj\Debug\uart.exe
+D:\uart\uart\obj\Debug\uart.pdb
+D:\uart\uart\bin\Debug\uart.exe
+D:\uart\uart\bin\Debug\uart.pdb
+D:\uart\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\uart\uart\obj\Debug\uart.FormAttendanceInfo.resources
+D:\uart\uart\obj\Debug\uart.FormDeviceManagement.resources
+D:\uart\uart\obj\Debug\uart.FormMain.resources
+D:\uart\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+D:\uart\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\uart\uart\obj\Debug\uart.Properties.Resources.resources
+D:\uart\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\uart\uart\obj\Debug\uart.csproj.ResolveComReference.cache
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\uart\uart\obj\Debug\uart.exe
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\uart\uart\obj\Debug\uart.pdb
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.csproj.ResolveComReference.cache
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.csprojResolveAssemblyReference.cache
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.FormAttendanceInfo.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.FormDeviceManagement.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.FormMain.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.FormMinuteAttendanceInfo.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.FormPersonnelManagement.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\uart.csproj.GenerateResource.Cache
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\bin\Debug\access_control_system.exe
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\bin\Debug\access_control_system.pdb
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\access_control_system.Properties.Resources.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\access_control_system.exe
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\uart\obj\Debug\access_control_system.pdb
