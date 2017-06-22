@@ -107,6 +107,7 @@ namespace AccessControlSystem
             }
             string fromTime = dtpFrom.Text;
             string toTime = dtpTo.Text;
+
             queryDesignee(name, studentID);
             SQLiteConnection conn = null;
             string dbPath = "Data Source =" + Environment.CurrentDirectory + @"\dataBase\attendanceSheet.db";
@@ -134,10 +135,10 @@ namespace AccessControlSystem
                         }
                         string userStudentID = dgvAttendanceInfo.Rows[i].Cells[3].Value.ToString().PadLeft(11, '0'); //学号
                         SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
-                        cmd.CommandText = "SELECT * FROM attendanceRecord WHERE studentID = @studentID AND userName = @userName AND deviceName like @deviceName AND time >= @fromTime AND time <= @toTime ORDER BY time";//设置带参SQL语句  
+                        cmd.CommandText = "SELECT * FROM attendanceRecord WHERE studentID = @studentID AND name = @name AND deviceName like @deviceName AND time >= @fromTime AND time <= @toTime ORDER BY time";//设置带参SQL语句  
                         cmd.Parameters.AddRange(new[] {//添加参数  
                                                 new SQLiteParameter("@studentID", userStudentID),  
-                                                new SQLiteParameter("@userName", userName),  
+                                                new SQLiteParameter("@name", userName),  
                                                 new SQLiteParameter("@deviceName","%" + thisDeviceName + "%"),  
                                                 new SQLiteParameter("@fromTime", fromTime),  
                                                 new SQLiteParameter("@toTime", toTime),  
@@ -150,35 +151,35 @@ namespace AccessControlSystem
                         TimeSpan TPoneDelay = TimeSpan.Zero;
                         TimeSpan TPthisDelay = TimeSpan.Zero;
                         uint InAndOutTimes = 0;
-                        string state = "1";
+                        int state = 0;
                         string time;
                         while (reader.Read())
                         {
                             reallyInAndOutTimes++;
-                            state = reader.GetString(4);
-                            if ((state != "0") && (InAndOutTimes == 0))//从第一个进门时间开始计算
+                            state = reader.GetInt32(6);
+                            if ((state != 1) && (InAndOutTimes == 0))//从第一个进门时间开始计算
                             {
                                 continue;
                             }
                             else if (Convert.ToBoolean(InAndOutTimes % 2))
                             {
-                                if (state == "0") { continue; }//如果进出门次数是奇数应该是进门
+                                if (state == 1) { continue; }//如果进出门次数是奇数应该是进门
                             }
                             else
                             {
-                                if (state == "1") { continue; }//否则应该是出门
+                                if (state == 0) { continue; }//否则应该是出门
                             }
                             InAndOutTimes++;    //记录有效进出次数
-                            time = reader.GetString(5);//读取时间
+                            time = reader.GetString(7);//读取时间
                             switch (state)//判断状态
                             {
-                                case "0"://进门
+                                case 1://进门
                                     {
                                         DTfirst = DateTime.Parse(time);
                                         TPfirst = new TimeSpan(DTfirst.Ticks);
                                         break;
                                     }
-                                case "1"://出门
+                                case 0://出门
                                     {
                                         DTsecond = DateTime.Parse(time);
                                         TPsecond = new TimeSpan(DTsecond.Ticks);
@@ -242,28 +243,28 @@ namespace AccessControlSystem
             {
                 conn.Open();//打开数据库，若文件不存在会自动创建  
 
-                string sql = "SELECT * FROM student WHERE studentID like '%" + studentID + "%' AND name like '%" + name + "%'";
+                string sql = "SELECT * FROM personInfo WHERE studentID like '%" + studentID + "%' AND name like '%" + name + "%'";
                 SQLiteCommand cmdQ = new SQLiteCommand(sql, conn);
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
                 {
                     int index = dgvAttendanceInfo.Rows.Add();
 
-                    DateTime DTbirthDay = DateTime.Parse(reader.GetString(4));
+                    DateTime DTbirthDay = DateTime.Parse(reader.GetString(8));
                     TimeSpan TSbirthDay = new TimeSpan(DTbirthDay.Ticks);
                     TimeSpan Now = new TimeSpan(DateTime.Now.Ticks);
                     TimeSpan TSage = Now - TSbirthDay;
 
                     int age = (int)(TSage.TotalDays / 365);           //计算年龄
                     dgvAttendanceInfo.Rows[index].Cells[0].Value = reader.GetInt32(0);  //用户号
-                    dgvAttendanceInfo.Rows[index].Cells[1].Value = reader.GetString(1); //姓名
-                    dgvAttendanceInfo.Rows[index].Cells[2].Value = reader.GetString(2); //性别
+                    dgvAttendanceInfo.Rows[index].Cells[1].Value = reader.GetString(6); //姓名
+                    dgvAttendanceInfo.Rows[index].Cells[2].Value = reader.GetString(7); //性别
                     dgvAttendanceInfo.Rows[index].Cells[3].Value = reader.GetString(3); //学号
                     dgvAttendanceInfo.Rows[index].Cells[4].Value = age; //年龄
-                    dgvAttendanceInfo.Rows[index].Cells[5].Value = reader.GetString(5); //录入日期
-                    dgvAttendanceInfo.Rows[index].Cells[6].Value = reader.GetString(6); //QQ
-                    dgvAttendanceInfo.Rows[index].Cells[7].Value = reader.GetString(7); //电话号码
-                    dgvAttendanceInfo.Rows[index].Cells[8].Value = reader.GetInt32(9).ToString("X");  //权限
+                    dgvAttendanceInfo.Rows[index].Cells[5].Value = reader.GetString(25); //录入日期
+                    dgvAttendanceInfo.Rows[index].Cells[6].Value = reader.GetString(10); //QQ
+                    dgvAttendanceInfo.Rows[index].Cells[7].Value = reader.GetString(9); //电话号码
+                    dgvAttendanceInfo.Rows[index].Cells[8].Value = reader.GetString(12);  //权限
                 }
                 cmdQ.Dispose();//释放reader使用的资源，防止database is lock异常产生
                 reader.Dispose();//释放reader使用的资源，防止database is lock异常产生
@@ -284,17 +285,17 @@ namespace AccessControlSystem
             try
             {
                 conn.Open();//打开数据库，若文件不存在会自动创建  
-                string sql = "SELECT COUNT(*) FROM student";
+                string sql = "SELECT COUNT(*) FROM personInfo";
                 SQLiteCommand cmdQ = new SQLiteCommand(sql, conn);
                 int RowCount = Convert.ToInt32(cmdQ.ExecuteScalar());   //获取总人数
                 cmdQ.Dispose();//释放reader使用的资源，防止database is lock异常产生
 
-                sql = "SELECT * FROM student";
+                sql = "SELECT * FROM personInfo";
                 cmdQ = new SQLiteCommand(sql, conn);
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
                 {
-                    cbName.Items.Add(reader.GetString(1)); //姓名
+                    cbName.Items.Add(reader.GetString(6)); //姓名
                 }
                 cbName.Items.Add("所有"); //姓名
                 reader.Dispose();//释放reader使用的资源，防止database is lock异常产生
@@ -316,12 +317,12 @@ namespace AccessControlSystem
             try
             {
                 conn.Open();//打开数据库，若文件不存在会自动创建  
-                string sql = "SELECT COUNT(*) FROM student";
+                string sql = "SELECT COUNT(*) FROM personInfo";
                 SQLiteCommand cmdQ = new SQLiteCommand(sql, conn);
                 int RowCount = Convert.ToInt32(cmdQ.ExecuteScalar());   //获取总人数
                 cmdQ.Dispose();//释放reader使用的资源，防止database is lock异常产生
 
-                sql = "SELECT * FROM student";
+                sql = "SELECT * FROM personInfo";
                 cmdQ = new SQLiteCommand(sql, conn);
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
@@ -386,10 +387,10 @@ namespace AccessControlSystem
                         userName = userName.Insert(1, "  ");
                     }
                     SQLiteCommand cmd = new SQLiteCommand(conn);//实例化SQL命令
-                    cmd.CommandText = "SELECT * FROM attendanceRecord WHERE studentID = @studentID AND userName = @userName AND time >= @fromTime AND time <= @toTime ORDER BY time";//设置带参SQL语句  
+                    cmd.CommandText = "SELECT * FROM attendanceRecord WHERE studentID = @studentID AND name = @name AND time >= @fromTime AND time <= @toTime ORDER BY time";//设置带参SQL语句  
                     cmd.Parameters.AddRange(new[] {//添加参数  
                                             new SQLiteParameter("@studentID", userStudentID),  
-                                            new SQLiteParameter("@userName", userName),  
+                                            new SQLiteParameter("@name", userName),  
                                             new SQLiteParameter("@fromTime", fromTime),  
                                             new SQLiteParameter("@toTime", toTime),  
                                             });
@@ -397,12 +398,12 @@ namespace AccessControlSystem
                     while (reader.Read())
                     {
                         int index = formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows.Add();
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[0].Value = reader.GetString(3);//姓名
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[1].Value = reader.GetString(0);//设备名称
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[2].Value = reader.GetInt32(1);//用户号
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[3].Value = reader.GetString(2);//学号
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[4].Value = reader.GetString(4)=="0"?"进门":"出门";//状态
-                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[5].Value = reader.GetString(5);//时间
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[0].Value = reader.GetString(5);//姓名
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[1].Value = reader.GetString(1);//设备名称
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[2].Value = reader.GetInt32(3);//用户号
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[3].Value = reader.GetString(4);//学号
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[4].Value = reader.GetInt32(6) == 1 ? "进门" : "出门";//状态
+                        formMinuteAttendanceInfo.dgvMinuteAttendanceInfo.Rows[index].Cells[5].Value = reader.GetString(7);//时间
                     }
                 }
                 formMinuteAttendanceInfo.Show();
@@ -427,7 +428,7 @@ namespace AccessControlSystem
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
                 {
-                    cbDeviceName.Items.Add(reader.GetString(1)); //设备名称
+                    cbDeviceName.Items.Add(reader.GetString(2)); //设备名称
                 }
                 cbDeviceName.Items.Add("所有"); //设备名称
             }
@@ -645,6 +646,12 @@ namespace AccessControlSystem
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormAttendanceInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true; //取消关闭事件
         }
     }
 }

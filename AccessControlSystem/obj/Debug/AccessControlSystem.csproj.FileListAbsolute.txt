@@ -13,7 +13,6 @@ D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_syst
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.csproj.ResolveComReference.cache
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\bin\Debug\AccessControlSystem.exe
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\bin\Debug\AccessControlSystem.pdb
-D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.csprojResolveAssemblyReference.cache
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.FormAttendanceInfo.resources
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.FormDeviceManagement.resources
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.FormMain.resources
@@ -24,3 +23,4 @@ D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_syst
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.exe
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.pdb
 D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\LeafSoft.Units.NetTCPServer.resources
+D:\项目-比赛\创新团队\2016 WiFi门禁\上位机\WiFi_access_control_system_software\AccessControlSystem\obj\Debug\AccessControlSystem.csprojResolveAssemblyReference.cache

@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
+using PresentationControls;
 
 namespace AccessControlSystem.Model
 {
@@ -16,7 +17,7 @@ namespace AccessControlSystem.Model
         /// <summary>
         /// 设备列表
         /// </summary>
-        public List<PersonInfo> DeviceList
+        public List<PersonInfo> PersonList
         {
             get { return personList; }
             set { personList = value; }
@@ -25,7 +26,7 @@ namespace AccessControlSystem.Model
         {
             public UInt32   uID;            /* 用户号 1-5000 */
             public UInt32   cardID;         /* RFID卡号 */
-            public UInt32   avtiveState;    /* 激活状态 0:失效 1:有效 */
+            public UInt32   activeState;    /* 激活状态 0:失效 1:有效 */
             public string   studentID;      /* 学号 */
             public string   dormitory;      /* 寝室 */
             public string   major;          /* 学院 专业 */
@@ -50,7 +51,7 @@ namespace AccessControlSystem.Model
             {
                 uID = 0;
                 cardID = 0;
-                avtiveState = 0;
+                activeState = 0;
                 studentID = "";
                 dormitory = "";
                 major = "";
@@ -150,9 +151,12 @@ namespace AccessControlSystem.Model
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
                 {
-                    personInfo.uID         = (UInt32)reader.GetInt32(0);
+                    UInt32[] eigenNum = new UInt32[personInfo.eigenNum.Length];
+                    string[] eigen = new string[personInfo.eigen.Length];
+
+                    personInfo.uID = (UInt32)reader.GetInt32(0);
                     personInfo.cardID      = (UInt32)reader.GetInt32(1);
-                    personInfo.avtiveState = (UInt32)reader.GetInt32(2);
+                    personInfo.activeState = (UInt32)reader.GetInt32(2);
                     personInfo.studentID   = reader.GetString(3);
                     personInfo.dormitory   = reader.GetString(4);
                     personInfo.major       = reader.GetString(5);
@@ -165,16 +169,18 @@ namespace AccessControlSystem.Model
                     personInfo.authority   = reader.GetString(12);
                     personInfo.isLimitTime = (UInt32)reader.GetInt32(13);
                     personInfo.limitTime   = reader.GetString(14);
-                    personInfo.eigenNum[0] = (UInt32)reader.GetInt32(15);
-                    personInfo.eigenNum[1] = (UInt32)reader.GetInt32(16);
-                    personInfo.eigenNum[2] = (UInt32)reader.GetInt32(17);
-                    personInfo.eigenNum[3] = (UInt32)reader.GetInt32(18);
-                    personInfo.eigenNum[4] = (UInt32)reader.GetInt32(19);
-                    personInfo.eigen[0]    = reader.GetString(20);
-                    personInfo.eigen[1]    = reader.GetString(21);
-                    personInfo.eigen[2]    = reader.GetString(22);
-                    personInfo.eigen[3]    = reader.GetString(23);
-                    personInfo.eigen[4]    = reader.GetString(24);
+                    eigenNum[0]            = (UInt32)reader.GetInt32(15);
+                    eigenNum[1]            = (UInt32)reader.GetInt32(16);
+                    eigenNum[2]            = (UInt32)reader.GetInt32(17);
+                    eigenNum[3]            = (UInt32)reader.GetInt32(18);
+                    eigenNum[4]            = (UInt32)reader.GetInt32(19);
+                    eigen[0]               = reader.GetString(20);
+                    eigen[1]               = reader.GetString(21);
+                    eigen[2]               = reader.GetString(22);
+                    eigen[3]               = reader.GetString(23);
+                    eigen[4]               = reader.GetString(24);
+                    personInfo.eigenNum    = eigenNum;
+                    personInfo.eigen       = eigen;
                     personInfo.recodeDate  = reader.GetString(25);
                     personInfo.resv0       = reader.GetInt32(26);
                     personInfo.resv1       = reader.GetInt32(27);
@@ -208,13 +214,13 @@ namespace AccessControlSystem.Model
                 cmd = new SQLiteCommand(conn);     /* 实例化SQL命令 */
                 cmd.Transaction = tran;
                 cmd.CommandText = "insert into personInfo values(@uID, @cardID, @avtiveState, @studentID, @dormitory, " +
-                                  "@major, @name, @sex, @birthday, @tel, @QQ, @weiXin, @authority, @isLimitTime, @limitTime, "+
-                                  "@eigenNum0, @eigenNum1, @eigenNum2, @eigenNum3, @eigenNum4, @eigen0, @eigen1, @eigen2, "+
+                                  "@major, @name, @sex, @birthday, @tel, @QQ, @weiXin, @authority, @isLimitTime, @limitTime, " +
+                                  "@eigenNum0, @eigenNum1, @eigenNum2, @eigenNum3, @eigenNum4, @eigen0, @eigen1, @eigen2, " +
                                   "@eigen3, @eigen4, @recodeDate, @resv0, @resv1, @resv2, @resv3, @resv4)";/* 设置带参SQL语句 */
                 cmd.Parameters.AddRange(new[] {                  /* 添加参数 */
                                         new SQLiteParameter("@uID"        , person.uID        ),
                                         new SQLiteParameter("@cardID"     , person.cardID     ),
-                                        new SQLiteParameter("@avtiveState", person.avtiveState),
+                                        new SQLiteParameter("@avtiveState", person.activeState),
                                         new SQLiteParameter("@studentID"  , person.studentID  ),
                                         new SQLiteParameter("@dormitory"  , person.dormitory  ),
                                         new SQLiteParameter("@major"      , person.major      ),
@@ -251,7 +257,115 @@ namespace AccessControlSystem.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.Message == "constraint failed\r\nUNIQUE constraint failed: personInfo.uID")
+                {
+                    MessageBox.Show("用户号不能与其它用户相同！！！");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                cmd.Dispose();                                  /* 释放资源 */
+                conn.Close();
+                return false;
+            }
+            cmd.Dispose();                                  /* 释放资源 */
+            conn.Close();
+            return true;
+        }
+        /// <summary>
+        /// 修改用户
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        public bool UpdatePerson(PersonInfo person)
+        {
+            SQLiteConnection conn = new SQLiteConnection(dbPath);/* 创建数据库实例，指定文件位置 */
+            SQLiteCommand cmd = new SQLiteCommand();             /* 实例化SQL命令 */
+            try
+            {
+                conn.Open();                                     /* 打开数据库，若文件不存在会自动创建 */
+                SQLiteTransaction tran = conn.BeginTransaction();
+                cmd = new SQLiteCommand(conn);     /* 实例化SQL命令 */
+                cmd.Transaction = tran;
+                cmd.CommandText = "UPDATE personInfo SET " +
+                                  "cardID      = @cardID      ," +
+                                  "avtiveState = @avtiveState ," +
+                                  "studentID   = @studentID   ," +
+                                  "dormitory   = @dormitory   ," +
+                                  "major       = @major       ," +
+                                  "name        = @name        ," +
+                                  "sex         = @sex         ," +
+                                  "birthday    = @birthday    ," +
+                                  "tel         = @tel         ," +
+                                  "QQ          = @QQ          ," +
+                                  "weiXin      = @weiXin      ," +
+                                  "authority   = @authority   ," +
+                                  "isLimitTime = @isLimitTime ," +
+                                  "limitTime   = @limitTime   ," +
+                                  "eigenNum0   = @eigenNum0   ," +
+                                  "eigenNum1   = @eigenNum1   ," +
+                                  "eigenNum2   = @eigenNum2   ," +
+                                  "eigenNum3   = @eigenNum3   ," +
+                                  "eigenNum4   = @eigenNum4   ," +
+                                  "eigen0      = @eigen0      ," +
+                                  "eigen1      = @eigen1      ," +
+                                  "eigen2      = @eigen2      ," +
+                                  "eigen3      = @eigen3      ," +
+                                  "eigen4      = @eigen4      ," +
+                                  "resv0       = @resv0       ," +
+                                  "resv1       = @resv1       ," +
+                                  "resv2       = @resv2       ," +
+                                  "resv3       = @resv3       ," +
+                                  "resv4       = @resv4        " +
+                                  "where uID = @uID";/* 设置带参SQL语句 */
+                cmd.Parameters.AddRange(new[] {                  /* 添加参数 */
+                                        new SQLiteParameter("@uID"        , person.uID        ),
+                                        new SQLiteParameter("@cardID"     , person.cardID     ),
+                                        new SQLiteParameter("@avtiveState", person.activeState),
+                                        new SQLiteParameter("@studentID"  , person.studentID  ),
+                                        new SQLiteParameter("@dormitory"  , person.dormitory  ),
+                                        new SQLiteParameter("@major"      , person.major      ),
+                                        new SQLiteParameter("@name"       , person.name       ),
+                                        new SQLiteParameter("@sex"        , person.sex        ),
+                                        new SQLiteParameter("@birthday"   , person.birthday   ),
+                                        new SQLiteParameter("@tel"        , person.tel        ),
+                                        new SQLiteParameter("@QQ"         , person.QQ         ),
+                                        new SQLiteParameter("@weiXin"     , person.weiXin     ),
+                                        new SQLiteParameter("@authority"  , person.authority  ),
+                                        new SQLiteParameter("@isLimitTime", person.isLimitTime),
+                                        new SQLiteParameter("@limitTime"  , person.limitTime  ),
+                                        new SQLiteParameter("@eigenNum0"  , person.eigenNum[0]),
+                                        new SQLiteParameter("@eigenNum1"  , person.eigenNum[1]),
+                                        new SQLiteParameter("@eigenNum2"  , person.eigenNum[2]),
+                                        new SQLiteParameter("@eigenNum3"  , person.eigenNum[3]),
+                                        new SQLiteParameter("@eigenNum4"  , person.eigenNum[4]),
+                                        new SQLiteParameter("@eigen0"     , person.eigen[0]   ),
+                                        new SQLiteParameter("@eigen1"     , person.eigen[1]   ),
+                                        new SQLiteParameter("@eigen2"     , person.eigen[2]   ),
+                                        new SQLiteParameter("@eigen3"     , person.eigen[3]   ),
+                                        new SQLiteParameter("@eigen4"     , person.eigen[4]   ),
+                                        new SQLiteParameter("@resv0"      , person.resv0      ),
+                                        new SQLiteParameter("@resv1"      , person.resv1      ),
+                                        new SQLiteParameter("@resv2"      , person.resv2      ),
+                                        new SQLiteParameter("@resv3"      , person.resv3      ),
+                                        new SQLiteParameter("@resv4"      , person.resv4      )
+                                        });
+                cmd.ExecuteNonQuery();                          /* 执行查询 */
+                tran.Commit();                                  /* 提交 */
+                tran.Dispose();                                 /* 释放资源 */
+                InitList();                                     /* 更新列表 */
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "constraint failed\r\nUNIQUE constraint failed: personInfo.uID")
+                {
+                    MessageBox.Show("用户号不能与其它用户相同！！！");
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 cmd.Dispose();                                  /* 释放资源 */
                 conn.Close();
                 return false;
@@ -296,6 +410,91 @@ namespace AccessControlSystem.Model
             conn.Close();
 
             return true;
+        }
+        /// <summary>
+        /// 获得用户ID在列表中的索引，成功返回索引，失败返回-1
+        /// </summary>
+        /// <param name="uID"></param>
+        /// <returns></returns>
+        public Int32 uIDtoIndex(UInt32 uID)
+        {
+            for (int idx = 0; idx < personList.Count; idx++)
+            {
+                if (personList[idx].uID == uID) { return idx; }
+            }
+            return -1;
+        }
+        /// <summary>
+        /// 获取最大用户号
+        /// </summary>
+        /// <returns></returns>
+        public UInt32 max_user_id_get()
+        {
+            UInt32 max = 0;
+
+            for (int i = 0; i < personList.Count; i++)
+            {
+                if (personList[i].uID > max)
+                {
+                    max = personList[i].uID;
+                }
+            }
+
+            return max;
+        }
+        /// <summary>
+        /// 搜索指纹号是否已经使用
+        /// </summary>
+        /// <param name="finger_id"></param>
+        /// <returns></returns>
+        public bool finger_id_check(UInt32 finger_id)
+        {
+            for (int i = 0; i < personList.Count; i++)
+            {
+                for (int j = 0; j < personList[i].eigenNum.Length; j++)
+                {
+                    if (personList[i].eigenNum[j] == finger_id)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// 搜索用户号是否已经使用
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public bool user_id_check(UInt32 user_id)
+        {
+            for (int i = 0; i < personList.Count; i++)
+            {
+                if (personList[i].uID == user_id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        /// <summary>
+        /// 获取指定用户号的用户信息
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public PersonInfo user_get(UInt32 user_id)
+        {
+            for (int i = 0; i < personList.Count; i++)
+            {
+                if (personList[i].uID == user_id)
+                {
+                    return personList[i];
+                }
+            }
+
+            return new PersonInfo(5);;
         }
     }
 }

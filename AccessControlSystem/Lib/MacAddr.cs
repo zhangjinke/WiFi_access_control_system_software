@@ -12,7 +12,7 @@ namespace AccessControlSystem.Lib
     class MacAddr
     {
         private byte[] mac;
-
+        
         /// <summary>
         /// MAC地址
         /// </summary>
@@ -35,6 +35,17 @@ namespace AccessControlSystem.Lib
         {
             mac = new byte[6];
         }
+        public MacAddr(byte[] mac_addr)
+        {
+            if (6 == mac_addr.Length)
+            {
+                mac = mac_addr;
+            }
+            else
+            {
+                mac = new byte[6];
+            }
+        }
         /// <summary>
         /// 使用字符串的构造函数
         /// </summary>
@@ -42,12 +53,12 @@ namespace AccessControlSystem.Lib
         public MacAddr(string str)
         {
             mac = new byte[6];
-            str = str.Replace(" ", "");
+            str = str.Replace(" ", "").Replace(":", "");
             try
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    mac[i] = Convert.ToByte(str.Substring(i * 2 + i, 2), 16);
+                    mac[i] = Convert.ToByte(str.Substring(i * 2, 2), 16);
                 }
             }
             catch (Exception ex)

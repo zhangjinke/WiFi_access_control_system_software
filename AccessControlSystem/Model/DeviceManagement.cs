@@ -33,6 +33,7 @@ namespace AccessControlSystem.Model
         }
         public struct DeviceInfo
         {
+            public UInt32 ID;
             public string name;
             public string mac;
         }
@@ -53,7 +54,8 @@ namespace AccessControlSystem.Model
             try
             {
                 #region 初始化数据库文件并建表
-                string sql = "CREATE TABLE IF NOT EXISTS device(" + /* 建表语句 */ 
+                string sql = "CREATE TABLE IF NOT EXISTS device(" + /* 建表语句 */
+                                "ID INTEGER," +                     /* 设备ID */
                                 "mac VARCHAR(18)," +                /* MAC地址 */
                                 "name VARCHAR(20));";               /* 设备名称 */
                 cmdQ = new SQLiteCommand(sql, conn);
@@ -113,8 +115,9 @@ namespace AccessControlSystem.Model
                 SQLiteDataReader reader = cmdQ.ExecuteReader();
                 while (reader.Read())
                 {
-                    deviceInfo.mac = reader.GetString(0);         /* MAC地址 */
-                    deviceInfo.name = reader.GetString(1);        /* 设备名称 */
+                    deviceInfo.ID = (UInt32)reader.GetInt32(0);   /* 设备ID */
+                    deviceInfo.mac = reader.GetString(1);         /* MAC地址 */
+                    deviceInfo.name = reader.GetString(2);        /* 设备名称 */
                     deviceList.Add(deviceInfo);
                 }
                 reader.Dispose();                                 /* 释放资源 */
@@ -134,11 +137,23 @@ namespace AccessControlSystem.Model
             try
             {
                 conn.Open();                                     /* 打开数据库，若文件不存在会自动创建 */
+
+                string sql = "SELECT * FROM device";
+                cmdQ = new SQLiteCommand(sql, conn);
+
+                SQLiteDataReader reader = cmdQ.ExecuteReader();
+                if (reader.Read())
+                {
+
+                }
+                reader.Dispose();                                 /* 释放资源 */
+
                 SQLiteTransaction tran = conn.BeginTransaction();
                 cmdQ = new SQLiteCommand(conn);     /* 实例化SQL命令 */
                 cmdQ.Transaction = tran;
-                cmdQ.CommandText = "insert into device values(@mac, @name)";/* 设置带参SQL语句 */
+                cmdQ.CommandText = "insert into device values(@ID, @mac, @name)";/* 设置带参SQL语句 */
                 cmdQ.Parameters.AddRange(new[] {                 /* 添加参数 */
+                                        new SQLiteParameter("@ID", device.ID),
                                         new SQLiteParameter("@mac", device.mac),
                                         new SQLiteParameter("@name", device.name)
                                         });
@@ -170,8 +185,9 @@ namespace AccessControlSystem.Model
                 SQLiteTransaction tran = conn.BeginTransaction();
                 cmdQ = new SQLiteCommand(conn);     /* 实例化SQL命令 */
                 cmdQ.Transaction = tran;
-                cmdQ.CommandText = "DELETE FROM device where name = @name and mac = @mac";/* 设置带参SQL语句 */
+                cmdQ.CommandText = "DELETE FROM device where ID = @ID and name = @name and mac = @mac";/* 设置带参SQL语句 */
                 cmdQ.Parameters.AddRange(new[] {                  /* 添加参数 */
+                                        new SQLiteParameter("@ID", device.ID),
                                         new SQLiteParameter("@mac", device.mac),
                                         new SQLiteParameter("@name", device.name)
                                         });
@@ -191,6 +207,23 @@ namespace AccessControlSystem.Model
             conn.Close();
 
             return true;
+        }
+        /// <summary>
+        /// 由设备id获取设备名称
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string device_name_get (byte id)
+        {
+            for (int i = 0; i < deviceList.Count; i++)
+            {
+                if (id == deviceList[i].ID)
+                {
+                    return deviceList[i].name;
+                }
+            }
+
+            return "";
         }
     }
 }

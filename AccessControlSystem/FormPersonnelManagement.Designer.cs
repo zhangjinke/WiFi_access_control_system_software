@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPersonnelManagement));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            PresentationControls.CheckBoxProperties checkBoxProperties1 = new PresentationControls.CheckBoxProperties();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.新增toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +69,7 @@
             this.gbIDandEigen = new System.Windows.Forms.GroupBox();
             this.tbcEigen = new System.Windows.Forms.TabControl();
             this.tbpEigen1 = new System.Windows.Forms.TabPage();
-            this.tbEigen = new System.Windows.Forms.TextBox();
+            this.tbEigen1 = new System.Windows.Forms.TextBox();
             this.tbpEigen2 = new System.Windows.Forms.TabPage();
             this.tbEigen2 = new System.Windows.Forms.TextBox();
             this.tbpEigen3 = new System.Windows.Forms.TabPage();
@@ -78,14 +80,13 @@
             this.tbEigen5 = new System.Windows.Forms.TextBox();
             this.lbID = new System.Windows.Forms.Label();
             this.lbEigen = new System.Windows.Forms.Label();
-            this.tbID = new System.Windows.Forms.TextBox();
+            this.tbRFID = new System.Windows.Forms.TextBox();
             this.cbSex = new System.Windows.Forms.ComboBox();
             this.dtpBirthday = new System.Windows.Forms.DateTimePicker();
             this.lbUID = new System.Windows.Forms.Label();
             this.tbUID = new System.Windows.Forms.TextBox();
             this.cbBuilding = new System.Windows.Forms.ComboBox();
             this.cbFloor = new System.Windows.Forms.ComboBox();
-            this.cbAuthority = new System.Windows.Forms.ComboBox();
             this.gbLog = new System.Windows.Forms.GroupBox();
             this.btnDownloadAll = new System.Windows.Forms.Button();
             this.rtbLog = new System.Windows.Forms.RichTextBox();
@@ -94,29 +95,41 @@
             this.lbSelectDevice = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvPerson = new System.Windows.Forms.DataGridView();
-            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.recodeData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dormitory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authority = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eigen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbAuthority = new PresentationControls.CheckBoxComboBox();
+            this.cbActiveState = new System.Windows.Forms.CheckBox();
+            this.dtpLimitTime = new System.Windows.Forms.DateTimePicker();
+            this.lbLimitTime = new System.Windows.Forms.Label();
+            this.cbIsLimitTime = new System.Windows.Forms.CheckBox();
+            this.tbWeiXin = new System.Windows.Forms.TextBox();
+            this.lbWeiXin = new System.Windows.Forms.Label();
             this.lbMajor = new System.Windows.Forms.Label();
             this.cbMajor = new System.Windows.Forms.ComboBox();
             this.cbInstitute = new System.Windows.Forms.ComboBox();
             this.lbInstitute = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbWeiXin = new System.Windows.Forms.Label();
-            this.cbIsLimitTime = new System.Windows.Forms.CheckBox();
-            this.dtpLimitTime = new System.Windows.Forms.DateTimePicker();
-            this.lbLimitTime = new System.Windows.Forms.Label();
-            this.cbActiveState = new System.Windows.Forms.CheckBox();
+            this.UID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeState = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authority = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isLimitTime = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.LimitTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.institute = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.major = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.recodeData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weiXin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dormitory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigen1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigen2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigen3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigen4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigen5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eigenNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.cmsdgvPerson.SuspendLayout();
             this.cmstbLog.SuspendLayout();
@@ -280,7 +293,7 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(27, 45);
+            this.lbName.Location = new System.Drawing.Point(27, 46);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(29, 12);
             this.lbName.TabIndex = 0;
@@ -289,7 +302,7 @@
             // lbSex
             // 
             this.lbSex.AutoSize = true;
-            this.lbSex.Location = new System.Drawing.Point(27, 79);
+            this.lbSex.Location = new System.Drawing.Point(27, 76);
             this.lbSex.Name = "lbSex";
             this.lbSex.Size = new System.Drawing.Size(29, 12);
             this.lbSex.TabIndex = 1;
@@ -307,7 +320,7 @@
             // lbStudentID
             // 
             this.lbStudentID.AutoSize = true;
-            this.lbStudentID.Location = new System.Drawing.Point(27, 104);
+            this.lbStudentID.Location = new System.Drawing.Point(27, 105);
             this.lbStudentID.Name = "lbStudentID";
             this.lbStudentID.Size = new System.Drawing.Size(29, 12);
             this.lbStudentID.TabIndex = 3;
@@ -316,7 +329,7 @@
             // lbQQ
             // 
             this.lbQQ.AutoSize = true;
-            this.lbQQ.Location = new System.Drawing.Point(226, 76);
+            this.lbQQ.Location = new System.Drawing.Point(226, 74);
             this.lbQQ.Name = "lbQQ";
             this.lbQQ.Size = new System.Drawing.Size(41, 12);
             this.lbQQ.TabIndex = 4;
@@ -334,7 +347,7 @@
             // lbAuthority
             // 
             this.lbAuthority.AutoSize = true;
-            this.lbAuthority.Location = new System.Drawing.Point(27, 193);
+            this.lbAuthority.Location = new System.Drawing.Point(27, 194);
             this.lbAuthority.Name = "lbAuthority";
             this.lbAuthority.Size = new System.Drawing.Size(29, 12);
             this.lbAuthority.TabIndex = 8;
@@ -348,12 +361,13 @@
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(132, 21);
             this.tbName.TabIndex = 1;
+            this.tbName.Text = "张进科";
             this.tbName.TextChanged += new System.EventHandler(this.TextChangedChinese);
             // 
             // lbDomitory
             // 
             this.lbDomitory.AutoSize = true;
-            this.lbDomitory.Location = new System.Drawing.Point(27, 134);
+            this.lbDomitory.Location = new System.Drawing.Point(27, 135);
             this.lbDomitory.Name = "lbDomitory";
             this.lbDomitory.Size = new System.Drawing.Size(29, 12);
             this.lbDomitory.TabIndex = 13;
@@ -367,6 +381,7 @@
             this.tbStudentID.Name = "tbStudentID";
             this.tbStudentID.Size = new System.Drawing.Size(132, 21);
             this.tbStudentID.TabIndex = 3;
+            this.tbStudentID.Text = "11307030328";
             this.tbStudentID.TextChanged += new System.EventHandler(this.TextChangedNum);
             // 
             // tbDomitory
@@ -377,6 +392,7 @@
             this.tbDomitory.Name = "tbDomitory";
             this.tbDomitory.Size = new System.Drawing.Size(62, 21);
             this.tbDomitory.TabIndex = 6;
+            this.tbDomitory.Text = "414";
             this.tbDomitory.TextChanged += new System.EventHandler(this.TextChangedNum);
             // 
             // tbTel
@@ -387,6 +403,7 @@
             this.tbTel.Name = "tbTel";
             this.tbTel.Size = new System.Drawing.Size(132, 21);
             this.tbTel.TabIndex = 10;
+            this.tbTel.Text = "15825941073";
             this.tbTel.TextChanged += new System.EventHandler(this.TextChangedNum);
             // 
             // tbQQ
@@ -397,6 +414,7 @@
             this.tbQQ.Name = "tbQQ";
             this.tbQQ.Size = new System.Drawing.Size(132, 21);
             this.tbQQ.TabIndex = 9;
+            this.tbQQ.Text = "799548861";
             this.tbQQ.TextChanged += new System.EventHandler(this.TextChangedNum);
             // 
             // gbPhoto
@@ -424,6 +442,7 @@
             // 
             this.pbPortrait.BackColor = System.Drawing.SystemColors.Window;
             this.pbPortrait.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pbPortrait.Image = ((System.Drawing.Image)(resources.GetObject("pbPortrait.Image")));
             this.pbPortrait.Location = new System.Drawing.Point(19, 20);
             this.pbPortrait.Name = "pbPortrait";
             this.pbPortrait.Size = new System.Drawing.Size(120, 160);
@@ -436,7 +455,7 @@
             this.gbIDandEigen.Controls.Add(this.tbcEigen);
             this.gbIDandEigen.Controls.Add(this.lbID);
             this.gbIDandEigen.Controls.Add(this.lbEigen);
-            this.gbIDandEigen.Controls.Add(this.tbID);
+            this.gbIDandEigen.Controls.Add(this.tbRFID);
             this.gbIDandEigen.Location = new System.Drawing.Point(596, 12);
             this.gbIDandEigen.Name = "gbIDandEigen";
             this.gbIDandEigen.Size = new System.Drawing.Size(200, 224);
@@ -461,7 +480,7 @@
             // 
             // tbpEigen1
             // 
-            this.tbpEigen1.Controls.Add(this.tbEigen);
+            this.tbpEigen1.Controls.Add(this.tbEigen1);
             this.tbpEigen1.Location = new System.Drawing.Point(4, 19);
             this.tbpEigen1.Name = "tbpEigen1";
             this.tbpEigen1.Size = new System.Drawing.Size(121, 144);
@@ -469,19 +488,20 @@
             this.tbpEigen1.Text = "1";
             this.tbpEigen1.UseVisualStyleBackColor = true;
             // 
-            // tbEigen
+            // tbEigen1
             // 
-            this.tbEigen.BackColor = System.Drawing.SystemColors.Window;
-            this.tbEigen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbEigen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbEigen.Location = new System.Drawing.Point(0, 0);
-            this.tbEigen.MaxLength = 578;
-            this.tbEigen.Multiline = true;
-            this.tbEigen.Name = "tbEigen";
-            this.tbEigen.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbEigen.Size = new System.Drawing.Size(121, 144);
-            this.tbEigen.TabIndex = 14;
-            this.tbEigen.TextChanged += new System.EventHandler(this.TextChangedHex);
+            this.tbEigen1.BackColor = System.Drawing.SystemColors.Window;
+            this.tbEigen1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbEigen1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbEigen1.Location = new System.Drawing.Point(0, 0);
+            this.tbEigen1.MaxLength = 578;
+            this.tbEigen1.Multiline = true;
+            this.tbEigen1.Name = "tbEigen1";
+            this.tbEigen1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbEigen1.Size = new System.Drawing.Size(121, 144);
+            this.tbEigen1.TabIndex = 14;
+            this.tbEigen1.Text = resources.GetString("tbEigen1.Text");
+            this.tbEigen1.TextChanged += new System.EventHandler(this.TextChangedHex);
             // 
             // tbpEigen2
             // 
@@ -593,16 +613,17 @@
             this.lbEigen.TabIndex = 7;
             this.lbEigen.Text = "指纹特征值";
             // 
-            // tbID
+            // tbRFID
             // 
-            this.tbID.BackColor = System.Drawing.SystemColors.Window;
-            this.tbID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbID.Location = new System.Drawing.Point(52, 16);
-            this.tbID.MaxLength = 8;
-            this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(129, 21);
-            this.tbID.TabIndex = 13;
-            this.tbID.TextChanged += new System.EventHandler(this.TextChangedHex);
+            this.tbRFID.BackColor = System.Drawing.SystemColors.Window;
+            this.tbRFID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.tbRFID.Location = new System.Drawing.Point(52, 16);
+            this.tbRFID.MaxLength = 8;
+            this.tbRFID.Name = "tbRFID";
+            this.tbRFID.Size = new System.Drawing.Size(129, 21);
+            this.tbRFID.TabIndex = 13;
+            this.tbRFID.Text = "C6FBD4DD";
+            this.tbRFID.TextChanged += new System.EventHandler(this.TextChangedHex);
             // 
             // cbSex
             // 
@@ -624,6 +645,7 @@
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(132, 21);
             this.dtpBirthday.TabIndex = 11;
+            this.dtpBirthday.Value = new System.DateTime(1995, 2, 23, 0, 0, 0, 0);
             // 
             // lbUID
             // 
@@ -642,23 +664,13 @@
             this.tbUID.Name = "tbUID";
             this.tbUID.Size = new System.Drawing.Size(132, 21);
             this.tbUID.TabIndex = 0;
+            this.tbUID.Text = "1";
             this.tbUID.TextChanged += new System.EventHandler(this.TextChangedNum);
             // 
             // cbBuilding
             // 
             this.cbBuilding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBuilding.FormattingEnabled = true;
-            this.cbBuilding.Items.AddRange(new object[] {
-            "1园区（竹轩）",
-            "2园区（兰轩）",
-            "3园区（梅轩）",
-            "4园区（菊轩）",
-            "5园区（松轩）",
-            "6园区（荷轩）",
-            "7园区（榕轩）",
-            "8园区（柏轩）",
-            "9园区（桂轩）",
-            "10园区（柳轩）"});
             this.cbBuilding.Location = new System.Drawing.Point(62, 131);
             this.cbBuilding.Name = "cbBuilding";
             this.cbBuilding.Size = new System.Drawing.Size(132, 20);
@@ -674,26 +686,6 @@
             this.cbFloor.Name = "cbFloor";
             this.cbFloor.Size = new System.Drawing.Size(41, 20);
             this.cbFloor.TabIndex = 5;
-            // 
-            // cbAuthority
-            // 
-            this.cbAuthority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAuthority.FormattingEnabled = true;
-            this.cbAuthority.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "E",
-            "F"});
-            this.cbAuthority.Location = new System.Drawing.Point(62, 190);
-            this.cbAuthority.Name = "cbAuthority";
-            this.cbAuthority.Size = new System.Drawing.Size(132, 20);
-            this.cbAuthority.TabIndex = 12;
             // 
             // gbLog
             // 
@@ -778,11 +770,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.cbAuthority);
             this.splitContainer1.Panel2.Controls.Add(this.cbActiveState);
             this.splitContainer1.Panel2.Controls.Add(this.dtpLimitTime);
             this.splitContainer1.Panel2.Controls.Add(this.lbLimitTime);
             this.splitContainer1.Panel2.Controls.Add(this.cbIsLimitTime);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.tbWeiXin);
             this.splitContainer1.Panel2.Controls.Add(this.lbWeiXin);
             this.splitContainer1.Panel2.Controls.Add(this.lbMajor);
             this.splitContainer1.Panel2.Controls.Add(this.cbMajor);
@@ -792,7 +785,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.lbSelectDevice);
             this.splitContainer1.Panel2.Controls.Add(this.cbDeviceList);
             this.splitContainer1.Panel2.Controls.Add(this.btnDownload);
-            this.splitContainer1.Panel2.Controls.Add(this.cbAuthority);
             this.splitContainer1.Panel2.Controls.Add(this.cbFloor);
             this.splitContainer1.Panel2.Controls.Add(this.cbBuilding);
             this.splitContainer1.Panel2.Controls.Add(this.tbUID);
@@ -823,29 +815,40 @@
             this.dgvPerson.AllowUserToAddRows = false;
             this.dgvPerson.AllowUserToDeleteRows = false;
             this.dgvPerson.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPerson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPerson.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPerson.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPerson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UID,
+            this.activeState,
             this.name,
             this.sex,
+            this.authority,
+            this.isLimitTime,
+            this.LimitTime,
             this.StudentID,
+            this.institute,
+            this.major,
             this.age,
             this.birthday,
             this.recodeData,
             this.QQ,
+            this.weiXin,
             this.tel,
             this.dormitory,
-            this.authority,
             this.ID,
-            this.eigen});
+            this.eigen1,
+            this.eigen2,
+            this.eigen3,
+            this.eigen4,
+            this.eigen5,
+            this.eigenNum});
             this.dgvPerson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPerson.Location = new System.Drawing.Point(0, 0);
             this.dgvPerson.Name = "dgvPerson";
@@ -858,95 +861,86 @@
             this.dgvPerson.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPerson_CellMouseDown);
             this.dgvPerson.DoubleClick += new System.EventHandler(this.编辑ToolStripMenuItem_Click);
             // 
-            // UID
+            // cbAuthority
             // 
-            this.UID.HeaderText = "用户号";
-            this.UID.Name = "UID";
-            this.UID.ReadOnly = true;
-            this.UID.Width = 64;
+            checkBoxProperties1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cbAuthority.CheckBoxProperties = checkBoxProperties1;
+            this.cbAuthority.DisplayMemberSingleItem = "";
+            this.cbAuthority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAuthority.FormattingEnabled = true;
+            this.cbAuthority.Items.AddRange(new object[] {
+            "超级管理员",
+            "管理员",
+            "407",
+            "409",
+            "410",
+            "411",
+            "412"});
+            this.cbAuthority.Location = new System.Drawing.Point(62, 190);
+            this.cbAuthority.Name = "cbAuthority";
+            this.cbAuthority.Size = new System.Drawing.Size(132, 20);
+            this.cbAuthority.TabIndex = 43;
             // 
-            // name
+            // cbActiveState
             // 
-            this.name.HeaderText = "姓名";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 69;
+            this.cbActiveState.AutoSize = true;
+            this.cbActiveState.Checked = true;
+            this.cbActiveState.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbActiveState.Location = new System.Drawing.Point(29, 223);
+            this.cbActiveState.Name = "cbActiveState";
+            this.cbActiveState.Size = new System.Drawing.Size(48, 16);
+            this.cbActiveState.TabIndex = 42;
+            this.cbActiveState.Text = "激活";
+            this.cbActiveState.UseVisualStyleBackColor = true;
+            this.cbActiveState.CheckedChanged += new System.EventHandler(this.cbActiveState_CheckedChanged);
             // 
-            // sex
+            // dtpLimitTime
             // 
-            this.sex.HeaderText = "性别";
-            this.sex.Name = "sex";
-            this.sex.ReadOnly = true;
-            this.sex.Width = 61;
+            this.dtpLimitTime.CustomFormat = "yyyy年MM月dd日 HH:mm:ss";
+            this.dtpLimitTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpLimitTime.Location = new System.Drawing.Point(252, 220);
+            this.dtpLimitTime.Name = "dtpLimitTime";
+            this.dtpLimitTime.Size = new System.Drawing.Size(177, 21);
+            this.dtpLimitTime.TabIndex = 41;
             // 
-            // StudentID
+            // lbLimitTime
             // 
-            this.StudentID.HeaderText = "学号";
-            this.StudentID.Name = "StudentID";
-            this.StudentID.ReadOnly = true;
-            this.StudentID.Width = 89;
+            this.lbLimitTime.AutoSize = true;
+            this.lbLimitTime.Location = new System.Drawing.Point(209, 224);
+            this.lbLimitTime.Name = "lbLimitTime";
+            this.lbLimitTime.Size = new System.Drawing.Size(41, 12);
+            this.lbLimitTime.TabIndex = 40;
+            this.lbLimitTime.Text = "有效期";
             // 
-            // age
+            // cbIsLimitTime
             // 
-            this.age.HeaderText = "年龄";
-            this.age.Name = "age";
-            this.age.ReadOnly = true;
-            this.age.Width = 54;
+            this.cbIsLimitTime.AutoSize = true;
+            this.cbIsLimitTime.Location = new System.Drawing.Point(214, 194);
+            this.cbIsLimitTime.Name = "cbIsLimitTime";
+            this.cbIsLimitTime.Size = new System.Drawing.Size(72, 16);
+            this.cbIsLimitTime.TabIndex = 39;
+            this.cbIsLimitTime.Text = "时间限制";
+            this.cbIsLimitTime.UseVisualStyleBackColor = true;
+            this.cbIsLimitTime.CheckedChanged += new System.EventHandler(this.cbIsLimitTime_CheckedChanged);
             // 
-            // birthday
+            // tbWeiXin
             // 
-            this.birthday.HeaderText = "出生日期";
-            this.birthday.Name = "birthday";
-            this.birthday.ReadOnly = true;
+            this.tbWeiXin.BackColor = System.Drawing.SystemColors.Window;
+            this.tbWeiXin.Location = new System.Drawing.Point(273, 100);
+            this.tbWeiXin.MaxLength = 15;
+            this.tbWeiXin.Name = "tbWeiXin";
+            this.tbWeiXin.Size = new System.Drawing.Size(132, 21);
+            this.tbWeiXin.TabIndex = 38;
+            this.tbWeiXin.Text = "zhangjinke0220";
             // 
-            // recodeData
+            // lbWeiXin
             // 
-            this.recodeData.HeaderText = "录入时间";
-            this.recodeData.Name = "recodeData";
-            this.recodeData.ReadOnly = true;
-            this.recodeData.Width = 109;
-            // 
-            // QQ
-            // 
-            this.QQ.HeaderText = "QQ";
-            this.QQ.Name = "QQ";
-            this.QQ.ReadOnly = true;
-            this.QQ.Width = 77;
-            // 
-            // tel
-            // 
-            this.tel.HeaderText = "电话号码";
-            this.tel.Name = "tel";
-            this.tel.ReadOnly = true;
-            this.tel.Width = 93;
-            // 
-            // dormitory
-            // 
-            this.dormitory.HeaderText = "寝室";
-            this.dormitory.Name = "dormitory";
-            this.dormitory.ReadOnly = true;
-            this.dormitory.Width = 133;
-            // 
-            // authority
-            // 
-            this.authority.HeaderText = "权限";
-            this.authority.Name = "authority";
-            this.authority.ReadOnly = true;
-            this.authority.Width = 53;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "卡号";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 77;
-            // 
-            // eigen
-            // 
-            this.eigen.HeaderText = "特征值";
-            this.eigen.Name = "eigen";
-            this.eigen.ReadOnly = true;
-            this.eigen.Width = 115;
+            this.lbWeiXin.AutoSize = true;
+            this.lbWeiXin.Location = new System.Drawing.Point(238, 104);
+            this.lbWeiXin.Name = "lbWeiXin";
+            this.lbWeiXin.Size = new System.Drawing.Size(29, 12);
+            this.lbWeiXin.TabIndex = 37;
+            this.lbWeiXin.Text = "微信";
             // 
             // lbMajor
             // 
@@ -975,6 +969,7 @@
             this.cbInstitute.Name = "cbInstitute";
             this.cbInstitute.Size = new System.Drawing.Size(132, 20);
             this.cbInstitute.TabIndex = 7;
+            this.cbInstitute.TextChanged += new System.EventHandler(this.cbInstitute_TextChanged);
             // 
             // lbInstitute
             // 
@@ -985,61 +980,167 @@
             this.lbInstitute.TabIndex = 33;
             this.lbInstitute.Text = "学院";
             // 
-            // textBox1
+            // UID
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(273, 100);
-            this.textBox1.MaxLength = 15;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 21);
-            this.textBox1.TabIndex = 38;
+            this.UID.HeaderText = "用户号";
+            this.UID.Name = "UID";
+            this.UID.ReadOnly = true;
+            this.UID.Width = 64;
             // 
-            // lbWeiXin
+            // activeState
             // 
-            this.lbWeiXin.AutoSize = true;
-            this.lbWeiXin.Location = new System.Drawing.Point(238, 104);
-            this.lbWeiXin.Name = "lbWeiXin";
-            this.lbWeiXin.Size = new System.Drawing.Size(29, 12);
-            this.lbWeiXin.TabIndex = 37;
-            this.lbWeiXin.Text = "微信";
+            this.activeState.HeaderText = "激活状态";
+            this.activeState.Name = "activeState";
+            this.activeState.ReadOnly = true;
+            this.activeState.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.activeState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // cbIsLimitTime
+            // name
             // 
-            this.cbIsLimitTime.AutoSize = true;
-            this.cbIsLimitTime.Location = new System.Drawing.Point(228, 194);
-            this.cbIsLimitTime.Name = "cbIsLimitTime";
-            this.cbIsLimitTime.Size = new System.Drawing.Size(72, 16);
-            this.cbIsLimitTime.TabIndex = 39;
-            this.cbIsLimitTime.Text = "时间限制";
-            this.cbIsLimitTime.UseVisualStyleBackColor = true;
+            this.name.HeaderText = "姓名";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 69;
             // 
-            // dtpLimitTime
+            // sex
             // 
-            this.dtpLimitTime.CustomFormat = "yyyy年MM月dd日";
-            this.dtpLimitTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLimitTime.Location = new System.Drawing.Point(273, 220);
-            this.dtpLimitTime.Name = "dtpLimitTime";
-            this.dtpLimitTime.Size = new System.Drawing.Size(132, 21);
-            this.dtpLimitTime.TabIndex = 41;
+            this.sex.HeaderText = "性别";
+            this.sex.Name = "sex";
+            this.sex.ReadOnly = true;
+            this.sex.Width = 61;
             // 
-            // lbLimitTime
+            // authority
             // 
-            this.lbLimitTime.AutoSize = true;
-            this.lbLimitTime.Location = new System.Drawing.Point(226, 224);
-            this.lbLimitTime.Name = "lbLimitTime";
-            this.lbLimitTime.Size = new System.Drawing.Size(41, 12);
-            this.lbLimitTime.TabIndex = 40;
-            this.lbLimitTime.Text = "有效期";
+            this.authority.HeaderText = "权限";
+            this.authority.Name = "authority";
+            this.authority.ReadOnly = true;
+            this.authority.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.authority.Width = 53;
             // 
-            // cbActiveState
+            // isLimitTime
             // 
-            this.cbActiveState.AutoSize = true;
-            this.cbActiveState.Location = new System.Drawing.Point(29, 223);
-            this.cbActiveState.Name = "cbActiveState";
-            this.cbActiveState.Size = new System.Drawing.Size(48, 16);
-            this.cbActiveState.TabIndex = 42;
-            this.cbActiveState.Text = "激活";
-            this.cbActiveState.UseVisualStyleBackColor = true;
+            this.isLimitTime.HeaderText = "时间限制";
+            this.isLimitTime.Name = "isLimitTime";
+            this.isLimitTime.ReadOnly = true;
+            this.isLimitTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.isLimitTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // LimitTime
+            // 
+            this.LimitTime.HeaderText = "有效期";
+            this.LimitTime.Name = "LimitTime";
+            this.LimitTime.ReadOnly = true;
+            // 
+            // StudentID
+            // 
+            this.StudentID.HeaderText = "学号";
+            this.StudentID.Name = "StudentID";
+            this.StudentID.ReadOnly = true;
+            this.StudentID.Width = 89;
+            // 
+            // institute
+            // 
+            this.institute.HeaderText = "学院";
+            this.institute.Name = "institute";
+            this.institute.ReadOnly = true;
+            // 
+            // major
+            // 
+            this.major.HeaderText = "专业";
+            this.major.Name = "major";
+            this.major.ReadOnly = true;
+            // 
+            // age
+            // 
+            this.age.HeaderText = "年龄";
+            this.age.Name = "age";
+            this.age.ReadOnly = true;
+            this.age.Width = 54;
+            // 
+            // birthday
+            // 
+            this.birthday.HeaderText = "出生日期";
+            this.birthday.Name = "birthday";
+            this.birthday.ReadOnly = true;
+            // 
+            // recodeData
+            // 
+            this.recodeData.HeaderText = "录入时间";
+            this.recodeData.Name = "recodeData";
+            this.recodeData.ReadOnly = true;
+            this.recodeData.Width = 109;
+            // 
+            // QQ
+            // 
+            this.QQ.HeaderText = "QQ";
+            this.QQ.Name = "QQ";
+            this.QQ.ReadOnly = true;
+            this.QQ.Width = 77;
+            // 
+            // weiXin
+            // 
+            this.weiXin.HeaderText = "微信";
+            this.weiXin.Name = "weiXin";
+            this.weiXin.ReadOnly = true;
+            // 
+            // tel
+            // 
+            this.tel.HeaderText = "电话号码";
+            this.tel.Name = "tel";
+            this.tel.ReadOnly = true;
+            this.tel.Width = 93;
+            // 
+            // dormitory
+            // 
+            this.dormitory.HeaderText = "寝室";
+            this.dormitory.Name = "dormitory";
+            this.dormitory.ReadOnly = true;
+            this.dormitory.Width = 133;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "卡号";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 77;
+            // 
+            // eigen1
+            // 
+            this.eigen1.HeaderText = "指纹1";
+            this.eigen1.Name = "eigen1";
+            this.eigen1.ReadOnly = true;
+            this.eigen1.Width = 115;
+            // 
+            // eigen2
+            // 
+            this.eigen2.HeaderText = "指纹2";
+            this.eigen2.Name = "eigen2";
+            this.eigen2.ReadOnly = true;
+            // 
+            // eigen3
+            // 
+            this.eigen3.HeaderText = "指纹3";
+            this.eigen3.Name = "eigen3";
+            this.eigen3.ReadOnly = true;
+            // 
+            // eigen4
+            // 
+            this.eigen4.HeaderText = "指纹4";
+            this.eigen4.Name = "eigen4";
+            this.eigen4.ReadOnly = true;
+            // 
+            // eigen5
+            // 
+            this.eigen5.HeaderText = "指纹5";
+            this.eigen5.Name = "eigen5";
+            this.eigen5.ReadOnly = true;
+            // 
+            // eigenNum
+            // 
+            this.eigenNum.HeaderText = "指纹号";
+            this.eigenNum.Name = "eigenNum";
+            this.eigenNum.ReadOnly = true;
+            this.eigenNum.Width = 150;
             // 
             // FormPersonnelManagement
             // 
@@ -1054,6 +1155,7 @@
             this.Name = "FormPersonnelManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "人员维护";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPersonnelManagement_FormClosing);
             this.Load += new System.EventHandler(this.FormPersonnelManagement_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1124,35 +1226,21 @@
         private System.Windows.Forms.PictureBox pbPortrait;
         private System.Windows.Forms.GroupBox gbIDandEigen;
         private System.Windows.Forms.Label lbID;
-        public System.Windows.Forms.TextBox tbEigen;
+        public System.Windows.Forms.TextBox tbEigen1;
         private System.Windows.Forms.Label lbEigen;
-        private System.Windows.Forms.TextBox tbID;
+        private System.Windows.Forms.TextBox tbRFID;
         private System.Windows.Forms.ComboBox cbSex;
         private System.Windows.Forms.DateTimePicker dtpBirthday;
         private System.Windows.Forms.Label lbUID;
         private System.Windows.Forms.TextBox tbUID;
         private System.Windows.Forms.ComboBox cbBuilding;
         private System.Windows.Forms.ComboBox cbFloor;
-        private System.Windows.Forms.ComboBox cbAuthority;
         private System.Windows.Forms.GroupBox gbLog;
         private System.Windows.Forms.Button btnDownload;
         public System.Windows.Forms.ComboBox cbDeviceList;
         private System.Windows.Forms.Label lbSelectDevice;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvPerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn age;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthday;
-        private System.Windows.Forms.DataGridViewTextBoxColumn recodeData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QQ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dormitory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authority;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eigen;
         private System.Windows.Forms.RichTextBox rtbLog;
         private System.Windows.Forms.Button btnDownloadAll;
         private System.Windows.Forms.TabControl tbcEigen;
@@ -1169,11 +1257,36 @@
         private System.Windows.Forms.ComboBox cbMajor;
         private System.Windows.Forms.ComboBox cbInstitute;
         private System.Windows.Forms.Label lbInstitute;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbWeiXin;
         private System.Windows.Forms.Label lbWeiXin;
         private System.Windows.Forms.DateTimePicker dtpLimitTime;
         private System.Windows.Forms.Label lbLimitTime;
         private System.Windows.Forms.CheckBox cbIsLimitTime;
         private System.Windows.Forms.CheckBox cbActiveState;
+        private PresentationControls.CheckBoxComboBox cbAuthority;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn activeState;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authority;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isLimitTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LimitTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn institute;
+        private System.Windows.Forms.DataGridViewTextBoxColumn major;
+        private System.Windows.Forms.DataGridViewTextBoxColumn age;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn recodeData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weiXin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dormitory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigen1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigen2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigen3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigen4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigen5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eigenNum;
     }
 }

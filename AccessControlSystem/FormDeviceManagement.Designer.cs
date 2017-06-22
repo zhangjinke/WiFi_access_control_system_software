@@ -32,6 +32,9 @@
             this.dgvMyDevice = new System.Windows.Forms.DataGridView();
             this.myDevice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDeviceManagement = new System.Windows.Forms.GroupBox();
+            this.btnMesh = new System.Windows.Forms.Button();
+            this.tbID = new System.Windows.Forms.TextBox();
+            this.lbID = new System.Windows.Forms.Label();
             this.tbDeviceAddress = new System.Windows.Forms.TextBox();
             this.tbDeviceName = new System.Windows.Forms.TextBox();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -39,7 +42,7 @@
             this.lbDeviceAddress = new System.Windows.Forms.Label();
             this.lbDeviceName = new System.Windows.Forms.Label();
             this.gbTcpServer = new System.Windows.Forms.GroupBox();
-            this.netTCPServer1 = new LeafSoft.Units.NetTCPServer();
+            this.netTCPServer = new LeafSoft.Units.NetTCPServer();
             this.gbDeviceList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMyDevice)).BeginInit();
             this.gbDeviceManagement.SuspendLayout();
@@ -80,6 +83,9 @@
             // 
             // gbDeviceManagement
             // 
+            this.gbDeviceManagement.Controls.Add(this.btnMesh);
+            this.gbDeviceManagement.Controls.Add(this.tbID);
+            this.gbDeviceManagement.Controls.Add(this.lbID);
             this.gbDeviceManagement.Controls.Add(this.tbDeviceAddress);
             this.gbDeviceManagement.Controls.Add(this.tbDeviceName);
             this.gbDeviceManagement.Controls.Add(this.btnDelete);
@@ -93,9 +99,36 @@
             this.gbDeviceManagement.TabStop = false;
             this.gbDeviceManagement.Text = "设备维护";
             // 
+            // btnMesh
+            // 
+            this.btnMesh.Location = new System.Drawing.Point(19, 175);
+            this.btnMesh.Name = "btnMesh";
+            this.btnMesh.Size = new System.Drawing.Size(89, 23);
+            this.btnMesh.TabIndex = 8;
+            this.btnMesh.Text = "查询Mesh";
+            this.btnMesh.UseVisualStyleBackColor = true;
+            this.btnMesh.Click += new System.EventHandler(this.btnMesh_Click);
+            // 
+            // tbID
+            // 
+            this.tbID.Location = new System.Drawing.Point(76, 36);
+            this.tbID.MaxLength = 20;
+            this.tbID.Name = "tbID";
+            this.tbID.Size = new System.Drawing.Size(113, 21);
+            this.tbID.TabIndex = 7;
+            // 
+            // lbID
+            // 
+            this.lbID.AutoSize = true;
+            this.lbID.Location = new System.Drawing.Point(29, 40);
+            this.lbID.Name = "lbID";
+            this.lbID.Size = new System.Drawing.Size(41, 12);
+            this.lbID.TabIndex = 6;
+            this.lbID.Text = "设备ID";
+            // 
             // tbDeviceAddress
             // 
-            this.tbDeviceAddress.Location = new System.Drawing.Point(76, 68);
+            this.tbDeviceAddress.Location = new System.Drawing.Point(76, 104);
             this.tbDeviceAddress.MaxLength = 255;
             this.tbDeviceAddress.Name = "tbDeviceAddress";
             this.tbDeviceAddress.Size = new System.Drawing.Size(113, 21);
@@ -103,7 +136,7 @@
             // 
             // tbDeviceName
             // 
-            this.tbDeviceName.Location = new System.Drawing.Point(76, 35);
+            this.tbDeviceName.Location = new System.Drawing.Point(76, 70);
             this.tbDeviceName.MaxLength = 20;
             this.tbDeviceName.Name = "tbDeviceName";
             this.tbDeviceName.Size = new System.Drawing.Size(113, 21);
@@ -111,9 +144,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(114, 106);
+            this.btnDelete.Location = new System.Drawing.Point(114, 142);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(89, 23);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "删除设备";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -121,9 +154,9 @@
             // 
             // btnADD
             // 
-            this.btnADD.Location = new System.Drawing.Point(19, 106);
+            this.btnADD.Location = new System.Drawing.Point(19, 142);
             this.btnADD.Name = "btnADD";
-            this.btnADD.Size = new System.Drawing.Size(75, 23);
+            this.btnADD.Size = new System.Drawing.Size(89, 23);
             this.btnADD.TabIndex = 2;
             this.btnADD.Text = "添加设备";
             this.btnADD.UseVisualStyleBackColor = true;
@@ -132,7 +165,7 @@
             // lbDeviceAddress
             // 
             this.lbDeviceAddress.AutoSize = true;
-            this.lbDeviceAddress.Location = new System.Drawing.Point(23, 71);
+            this.lbDeviceAddress.Location = new System.Drawing.Point(23, 108);
             this.lbDeviceAddress.Name = "lbDeviceAddress";
             this.lbDeviceAddress.Size = new System.Drawing.Size(47, 12);
             this.lbDeviceAddress.TabIndex = 1;
@@ -141,7 +174,7 @@
             // lbDeviceName
             // 
             this.lbDeviceName.AutoSize = true;
-            this.lbDeviceName.Location = new System.Drawing.Point(17, 38);
+            this.lbDeviceName.Location = new System.Drawing.Point(17, 74);
             this.lbDeviceName.Name = "lbDeviceName";
             this.lbDeviceName.Size = new System.Drawing.Size(53, 12);
             this.lbDeviceName.TabIndex = 0;
@@ -149,7 +182,7 @@
             // 
             // gbTcpServer
             // 
-            this.gbTcpServer.Controls.Add(this.netTCPServer1);
+            this.gbTcpServer.Controls.Add(this.netTCPServer);
             this.gbTcpServer.Location = new System.Drawing.Point(399, 12);
             this.gbTcpServer.Name = "gbTcpServer";
             this.gbTcpServer.Size = new System.Drawing.Size(200, 258);
@@ -157,12 +190,13 @@
             this.gbTcpServer.TabStop = false;
             this.gbTcpServer.Text = "TCP服务器";
             // 
-            // netTCPServer1
+            // netTCPServer
             // 
-            this.netTCPServer1.Location = new System.Drawing.Point(6, 20);
-            this.netTCPServer1.Name = "netTCPServer1";
-            this.netTCPServer1.Size = new System.Drawing.Size(188, 232);
-            this.netTCPServer1.TabIndex = 10;
+            this.netTCPServer.Location = new System.Drawing.Point(6, 20);
+            this.netTCPServer.Name = "netTCPServer";
+            this.netTCPServer.Size = new System.Drawing.Size(188, 232);
+            this.netTCPServer.TabIndex = 10;
+            this.netTCPServer.DataReceived += new LeafSoft.Lib.LeafEvent.DataReceivedHandler(this.netTCPServer1_DataReceived);
             // 
             // FormDeviceManagement
             // 
@@ -198,7 +232,10 @@
         private System.Windows.Forms.Button btnADD;
         private System.Windows.Forms.Label lbDeviceAddress;
         private System.Windows.Forms.Label lbDeviceName;
-        private LeafSoft.Units.NetTCPServer netTCPServer1;
+        private LeafSoft.Units.NetTCPServer netTCPServer;
         private System.Windows.Forms.GroupBox gbTcpServer;
+        private System.Windows.Forms.TextBox tbID;
+        private System.Windows.Forms.Label lbID;
+        private System.Windows.Forms.Button btnMesh;
     }
 }
